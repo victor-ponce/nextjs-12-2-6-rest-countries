@@ -24,7 +24,12 @@ export default function Home({ data }) {
   return (
     <div className="dark:bg-red-200">
       <Head>
-        <title>UtkWorld </title>
+      <title>NextJs-rest-countries-api</title>
+        <link rel='icon' href='/favicon.ico' />
+        <link
+          href='https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap'
+          rel='stylesheet'
+        />
       </Head>
       <main className=" scroll-smooth ">
         <SearchBox
