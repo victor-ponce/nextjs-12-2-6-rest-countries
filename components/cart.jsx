@@ -17,6 +17,7 @@ function Cart({ imgAdd, countryName, population, capital, region }) {
       </div>
     </>
   );
+
   function ImageCountry() {
     return (
      
@@ -25,6 +26,7 @@ function Cart({ imgAdd, countryName, population, capital, region }) {
       </div>
     );
   }
+
   function CountryInfo() {
     return (
       <div className='flex flex-col gap-1 text-xl '>

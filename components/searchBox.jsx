@@ -1,14 +1,16 @@
 import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
-/*import { SearchIcon } from "@heroicons/react/outline";*/
 
 function SearchBox({ search, searchByRegion }) {
   return (
     <>
       <div className="md:flex md:flex-cols justify-between px-8 md:px-14 py-3 items-center mb-8 mt-8">
         <div className="relative  mb-8  md:mb-0  items-center  flex     shadow rounded-md  md:w-96  h-12  hover:shadow-lg  ">
+        <span className=" absolute left-4   h-5 w-5  mr-2  text-gray-500 ease-in-out duration-300 cursor-auto ">
           <FontAwesomeIcon icon={faMagnifyingGlass} />
+        </span>
+          
           <input
             className=" pl-12  text-sm outline-none   w-[100%] h-[100%] font-semibold rounded-md "
             type="text"
