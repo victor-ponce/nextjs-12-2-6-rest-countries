@@ -3,26 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { useTheme } from "next-themes";
 // import { useRouter } from "next/router";
-import Link from "next/dist/client/link";
+import Link from "next/link";
 
-export default function CartFullPage({ apidata, location }) {
-  // change them of map
-  const { theme, setTheme } = useTheme();
-  console.log(theme);
+export default function CartFullPage(props) {
+  const {data} = props
+  console.log("window", typeof window)
+ 
+  //const { theme, setTheme } = useTheme();
 
-  // consoling
-  console.log(apidata);
-  // console.log(location);
-
-  // assigning location
-  const cLat = location.features[0].center[1];
-  const cLong = location.features[0].center[0];
-  console.log(cLat);
-  console.log(cLong);
-
-  const data = apidata[0];
-  const countNativeName = Object.keys(data.name.nativeName).length;
-  const NativeName = countNativeName >= 2 ? true : false;
   // css
   const TextGray = " text-gray-500 font-semibold";
   const FontSemibold = "font-semibold  ";
@@ -93,12 +81,7 @@ export default function CartFullPage({ apidata, location }) {
         <div>
           <span className={FontSemibold}> Native Name </span>
           <span className={TextGray}>
-            :
-            {NativeName
-              ? data.name.nativeName[Object.keys(data.name.nativeName)[1]]
-                  .common
-              : data.name.nativeName[Object.keys(data.name.nativeName)[0]]
-                  .common}
+            : {data.name.common}
           </span>
         </div>
         <div>
@@ -166,27 +149,45 @@ export const getCountryDataByName = async (name) => {
 
   const res = await fetch(`${path}/name/${name}`);
   const responseJson = await res.json();
-  return responseJson;
+  return responseJson[0];
 };
 
-export async function getServerSideProps({ params }) {
-  // fetching location data
-  const apidata = await getCountryDataByName(params.name);
-  const apiDataName = apidata[0].name.common;
+const getAllCountriesPaths = async () => {
+  const path = "https://restcountries.com/v3.1/all";
 
-  // fetching location  lan and lng
-  const apiKey =
-    "pk.eyJ1IjoidXRrYXJzaHNldGgiLCJhIjoiY2t5Y3JxZzhsMHNnMDJ4bzh1azNoYmh2ciJ9.-lfaCZ_sD5EsSRdsOyKOyQ"; // api key of Mapbox
-  const locationUrl = await fetch(
-    `https://api.mapbox.com/geocoding/v5/mapbox.places/${apiDataName}.json?limit=2&access_token=${apiKey}`
-  );
-  const location = await locationUrl.json();
+  const res = await fetch(`${path}`);
+  const data = await res.json();
+
+  // Iterar sobre arreglo data
+  const paths = data.map(country => {
+    return {
+      params: {
+        name: country.name.common.toLocaleLowerCase().replace(" ", "-")
+      }
+    }
+  })
+
+  return paths
+}
+
+export async function getStaticPaths() {
+  const paths = await getAllCountriesPaths();
+ // console.log("paths", paths);
+  return {
+    paths,
+    fallback: false,
+  };
+}
+
+export async function getStaticProps(context) {
+  const {params}= context
+  
+  // fetching location data
+  const data = await getCountryDataByName(params.name);
 
   return {
     props: {
-      apidata,
-      apiDataName,
-      location,
+      data,
     },
   };
 }
