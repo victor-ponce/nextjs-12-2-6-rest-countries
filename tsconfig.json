@@ -13,8 +13,11 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "incremental": true
+    "incremental": true,
+    
+
   },
   "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/navbar.jsx"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/navbar.jsx"],
+
 }

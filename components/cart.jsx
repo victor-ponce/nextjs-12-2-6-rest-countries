@@ -1,6 +1,6 @@
 
-const TextGray = " text-gray-500 font-semibold";
-const FontSemibold = "font-semibold ";
+const TextGray = " text-gray-500";
+const FontSemibold = "font-bold ";
 
 function Cart({ imgAdd, countryName, population, capital, region }) {
   return (

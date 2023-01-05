@@ -1,19 +1,20 @@
 import Head from "next/head";
+import { useRouter } from 'next/router';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
-import { useTheme } from "next-themes";
+//import { useTheme } from "next-themes";
 // import { useRouter } from "next/router";
-import Link from "next/link";
+//import Link from "next/link";
 
 export default function CartFullPage(props) {
   const {data} = props
-  console.log("window", typeof window)
+  //console.log("window", typeof window)
  
   //const { theme, setTheme } = useTheme();
 
   // css
-  const TextGray = " text-gray-500 font-semibold";
-  const FontSemibold = "font-semibold  ";
+  const TextGray = " text-gray-500";
+  const FontSemibold = "font-bold  ";
 
   return (
     <>
@@ -27,17 +28,16 @@ export default function CartFullPage(props) {
       <div>
         <div className=" mx-7 lg:mx-14">
           <BackButton />
-          <div className="mt-8 flex flex-col items-center  lg:flex-row md:flex gap-4 lg:gap-12   overflow-hidden">
+          <div className="mt-8 flex flex-col items-center  lg:flex-row md:flex gap-4 lg:gap-12 overflow-hidden">
             <CountryImage />
             <div>
               <h1 className="font-bold text-3xl  "> {data.name.common} </h1>
-              <div className="grid grid-cols-1 md:grid-cols-2  md:flex md:mt-5 md:gap-4      md:text-xl   ">
+              <div className="grid grid-cols-1 md:grid-cols-2  md:flex md:mt-5 md:gap-4 md:text-xl   ">
                 <LeftSideData />
                 <RightSideData />
               </div>
             </div>
           </div>
-          <div></div>
         </div>
       </div>
     </>
@@ -47,15 +47,16 @@ export default function CartFullPage(props) {
   // Above Components
 
   function BackButton() {
+    const router = useRouter();
     return (
       //  <Link href='/'></Link>
-      <Link href="/">
-        <FontAwesomeIcon
-          icon={faArrowLeftLong}
-          className="w-4 h-4  inline-block mr-2 "
-        />
-        <span className="text-gray-600"> Back </span>
-      </Link>
+      <button type="button" onClick={() => router.back()}>
+      <FontAwesomeIcon
+      icon={faArrowLeftLong}
+      className="w-4 h-4 inline-block mr-2 "
+      />
+      Back
+    </button>
     );
   }
   //
@@ -162,7 +163,7 @@ const getAllCountriesPaths = async () => {
   const paths = data.map(country => {
     return {
       params: {
-        name: country.name.common.toLocaleLowerCase().replace(" ", "-")
+        name: country.name.common//.toLowerCase().replace(" ", "-")
       }
     }
   })
@@ -172,17 +173,16 @@ const getAllCountriesPaths = async () => {
 
 export async function getStaticPaths() {
   const paths = await getAllCountriesPaths();
- // console.log("paths", paths);
+  console.log("paths", paths);
   return {
     paths,
     fallback: false,
   };
 }
 
-export async function getStaticProps(context) {
-  const {params}= context
-  
-  // fetching location data
+export async function getStaticProps({ params }) {
+  //const {params}= context
+  // fetching data
   const data = await getCountryDataByName(params.name);
 
   return {

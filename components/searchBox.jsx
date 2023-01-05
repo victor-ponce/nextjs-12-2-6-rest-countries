@@ -7,7 +7,7 @@ function SearchBox({ search, searchByRegion }) {
     <>
       <div className="md:flex md:flex-cols justify-between px-8 md:px-14 py-3 items-center mb-8 mt-8">
         <div className="relative  mb-8  md:mb-0  items-center  flex     shadow rounded-md  md:w-96  h-12  hover:shadow-lg  ">
-        <span className=" absolute left-4   h-5 w-5  mr-2  text-gray-500 ease-in-out duration-300 cursor-auto ">
+        <span className=" absolute left-4   h-5 w-5  mr-2  text-dark-gray ease-in-out duration-300 cursor-auto ">
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </span>
           
@@ -18,7 +18,7 @@ function SearchBox({ search, searchByRegion }) {
             onChange={search}
           />
         </div>
-        {/* Serach by reagion */}
+        {/* Search by reagion */}
         <div>
           <select
             className="form-select w-48  px-4 py-[.9rem] sm:px-6  shadow-md rounded-md border-none outline-none dark:bg-gray-700 cursor-pointer font-semibold "

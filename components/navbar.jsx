@@ -12,8 +12,8 @@ function Navbar() {
   return (
     <>
       <div
-        className={`sticky  top-0  z-50   flex w-full  shadow-xl justify-between px-8  md:px-14 py-5  items-center mb-8 ${
-          theme === "dark" ? "bg-[#121212] text-white" : "bg-white text-black"
+        className={`sticky  top-0  z-50   flex w-full justify-between px-8  md:px-14 py-5  items-center mb-8 ${
+          theme === "dark" ? "bg-dark-blue text-white shadow-none" : "bg-white text-very-dark-blue shadow-md"
         } transition-all delay-300`}
       >
         <div className={`${smFont} ${lgFont}  font-bold  `}>

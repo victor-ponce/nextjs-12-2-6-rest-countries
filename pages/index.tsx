@@ -1,6 +1,6 @@
 import Countries from "../components/countries";
 import SearchBox from "../components/searchBox";
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import Head from "next/head";
 
 export default function Home({ data }) {
@@ -19,10 +19,9 @@ export default function Home({ data }) {
           .includes(searchField.toLocaleLowerCase())
       : country.region.toLowerCase().includes(region.toLocaleLowerCase())
   );
-  // for Smooth scroll
 
   return (
-    <div className="dark:bg-red-200">
+    <div className="dark:bg-very-dark-blue">
       <Head>
       <title>NextJs-rest-countries-api</title>
         <link rel='icon' href='/favicon.ico' />
