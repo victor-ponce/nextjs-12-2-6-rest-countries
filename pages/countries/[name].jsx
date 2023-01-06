@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 //import { useTheme } from "next-themes";
@@ -7,9 +7,9 @@ import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 //import Link from "next/link";
 
 export default function CartFullPage(props) {
-  const {data} = props
+  const { data } = props;
   //console.log("window", typeof window)
- 
+
   //const { theme, setTheme } = useTheme();
 
   // css
@@ -51,12 +51,12 @@ export default function CartFullPage(props) {
     return (
       //  <Link href='/'></Link>
       <button type="button" onClick={() => router.back()}>
-      <FontAwesomeIcon
-      icon={faArrowLeftLong}
-      className="w-4 h-4 inline-block mr-2 "
-      />
-      Back
-    </button>
+        <FontAwesomeIcon
+          icon={faArrowLeftLong}
+          className="w-4 h-4 inline-block mr-2 "
+        />
+        Back
+      </button>
     );
   }
   //
@@ -81,9 +81,7 @@ export default function CartFullPage(props) {
       <div className=" flex flex-col gap-2  ml-auo mt-8 md:mt-0">
         <div>
           <span className={FontSemibold}> Native Name </span>
-          <span className={TextGray}>
-            : {data.name.common}
-          </span>
+          <span className={TextGray}>: {data.name.common}</span>
         </div>
         <div>
           <span className={FontSemibold}> Population </span>
@@ -132,11 +130,13 @@ export default function CartFullPage(props) {
             <span className={FontSemibold}> Languages </span>
             <span className={TextGray}>
               :{" "}
-              {Object.keys(data.languages)
-                .map(function (key, index) {
-                  return data.languages[key];
-                })
-                .join(", ")}
+              {data.languages
+                ? Object.keys(data.languages)
+                    .map(function (key, index) {
+                      return data.languages[key] || "N/A";
+                    })
+                    .join(", ")
+                : "N/A"}
             </span>
           </div>
         </div>
@@ -160,16 +160,16 @@ const getAllCountriesPaths = async () => {
   const data = await res.json();
 
   // Iterar sobre arreglo data
-  const paths = data.map(country => {
+  const paths = data.map((country) => {
     return {
       params: {
-        name: country.name.common//.toLowerCase().replace(" ", "-")
-      }
-    }
-  })
+        name: country.name.common, //.toLowerCase().replace(" ", "-")
+      },
+    };
+  });
 
-  return paths
-}
+  return paths;
+};
 
 export async function getStaticPaths() {
   const paths = await getAllCountriesPaths();
