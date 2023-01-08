@@ -42,7 +42,7 @@ export default function Home({ data }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const res = await fetch(`https://restcountries.com/v3.1/all`);
   const data = await res.json();
 

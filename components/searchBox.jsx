@@ -6,7 +6,7 @@ function SearchBox({ search, searchByRegion }) {
   return (
     <>
       <div className="md:flex md:flex-cols justify-between px-8 md:px-14 py-3 items-center mb-8 mt-8">
-        <div className="relative  mb-8  md:mb-0  items-center  flex     shadow rounded-md  md:w-96  h-12  hover:shadow-lg  ">
+        <div className="relative  mb-8  md:mb-0  items-center  flex     shadow rounded-md  md:w-96  h-12  hover:shadow-lg ">
         <span className=" absolute left-4   h-5 w-5  mr-2  text-dark-gray ease-in-out duration-300 cursor-auto ">
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </span>

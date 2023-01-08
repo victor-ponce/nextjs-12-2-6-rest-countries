@@ -3,7 +3,6 @@ import dynamic from "next/dynamic";
 const Cart = dynamic(() => import("./cart"));
 
 function Countries({ countries }) {
-  // console.log(countries.data);
 
   return (
     <>
@@ -20,7 +19,6 @@ function Countries({ countries }) {
             >
                   <Cart
                     imgAdd={data.flags.png}
-                    // imgAdd={data.flags.svg}
                     countryName={data.name.common}
                     population={new Intl.NumberFormat().format(data.population)}
                     region={data.region}
