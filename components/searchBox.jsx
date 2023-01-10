@@ -12,7 +12,7 @@ function SearchBox({ search, searchByRegion }) {
         </span>
           
           <input
-            className=" pl-12  text-sm outline-none   w-[100%] h-[100%] font-semibold rounded-md "
+            className=" pl-12  text-sm outline-none   w-[100%] h-[100%] font-semibold rounded-md dark:bg-dark-blue "
             type="text"
             placeholder="Search for a country..."
             onChange={search}
@@ -21,7 +21,7 @@ function SearchBox({ search, searchByRegion }) {
         {/* Search by reagion */}
         <div>
           <select
-            className="form-select w-48  px-4 py-[.9rem] sm:px-6  shadow-md rounded-md border-none outline-none dark:bg-gray-700 cursor-pointer font-semibold "
+            className="form-select w-48  px-4 py-[.9rem] sm:px-6  shadow-md rounded-md border-none outline-none dark:bg-gray-700 cursor-pointer font-semibold dark:bg-dark-blue "
             onChange={searchByRegion}
           >
             <RegionOptions />

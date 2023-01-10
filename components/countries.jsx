@@ -8,7 +8,7 @@ function Countries({ countries }) {
     <>
       <div
         style={{ minHeight: "1000px" }}
-        className=' containerGrid  px-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 3xl:grid-cols-8 justify-items-center gap-16  z-30 '
+        className=' containerGrid  px-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 3xl:grid-cols-8 justify-items-center gap-16  z-30  '
       >
         {countries.map(data => (
           <div key={data.name.common}>

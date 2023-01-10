@@ -6,7 +6,7 @@ function Cart({ imgAdd, countryName, population, capital, region }) {
   return (
     <>
      
-      <div className='  cursor-pointer rounded overflow-hidden shadow-xl group'>
+      <div className='  cursor-pointer rounded overflow-hidden shadow-xl group dark:bg-dark-blue'>
         <ImageCountry />
         <div className='pt-5 pl-5 pb-8 '>
           <div className='font-bold mb-4 text-2xl  w-[15rem]'>

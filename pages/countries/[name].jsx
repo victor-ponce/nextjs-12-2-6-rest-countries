@@ -5,9 +5,6 @@ import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 export default function CartFullPage(props) {
   const { data } = props;
-  //console.log("window", typeof window)
-
-  //const { theme, setTheme } = useTheme();
 
   // css
   const TextGray = " text-gray-500";
@@ -107,7 +104,7 @@ export default function CartFullPage(props) {
   //
   function RightSideData() {
     return (
-      <div>
+      <div className="lg:ml-16">
         <div className="flex mt-2 md:mt-0 flex-col gap-2  ml-auo ">
           <div>
             <span className={FontSemibold}> Top Level Doamin </span>
@@ -155,7 +152,6 @@ const getAllCountriesPaths = async () => {
   const res = await fetch(`${path}`);
   const data = await res.json();
 
-  // Iterar sobre arreglo data
   const paths = data.map((country) => {
     return {
       params: {
@@ -169,7 +165,6 @@ const getAllCountriesPaths = async () => {
 
 export async function getStaticPaths() {
   const paths = await getAllCountriesPaths();
-  console.log("paths", paths);
   return {
     paths,
     fallback: false,
