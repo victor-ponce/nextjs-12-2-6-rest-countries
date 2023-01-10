@@ -1,35 +1,43 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./components/**/*.tsx', './pages/**/*.tsx'],
+  darkMode: "class",
+  mode: "jit",
+  content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {
-      colors: {
-        'accent-1': '#FAFAFA',
-        'accent-2': '#EAEAEA',
-        'accent-7': '#333',
-        success: '#0070f3',
-        cyan: '#79FFE1',
-      },
-      spacing: {
-        28: '7rem',
-      },
-      letterSpacing: {
-        tighter: '-.04em',
-      },
-      lineHeight: {
-        tight: 1.2,
-      },
-      fontSize: {
-        '5xl': '2.5rem',
-        '6xl': '2.75rem',
-        '7xl': '4.5rem',
-        '8xl': '6.25rem',
-      },
-      boxShadow: {
-        sm: '0 5px 10px rgba(0, 0, 0, 0.12)',
-        md: '0 8px 30px rgba(0, 0, 0, 0.12)',
-      },
+    extend: {},
+    fontFamily: {
+      Nunito: ["Nunito Sans", "sans-serif"],
     },
+    screens: {
+      sm: "640px",
+      // => @media (min-width: 640px) { ... }
+
+      md: "768px",
+      // => @media (min-width: 768px) { ... }
+      // '':'1180px',
+
+      lg: "1024px",
+      // => @media (min-width: 1024px) { ... }
+
+      xl: "1280px",
+      // => @media (min-width: 1280px) { ... }
+
+      "2xl": "1536px",
+      // => @media (min-width: 1536px) { ... }
+
+      "3xl": "2000px",
+      // => @media (min-width: 1536px) { ... }
+    },
+    colors: {
+      'dark-blue': 'hsl(209, 23%, 22%)',
+      'very-dark-blue': 'hsl(207, 26%, 17%)',
+      'very-dark-blue2': 'hsl(200, 15%, 8%)',
+      'dark-gray': 'hsl(0, 0%, 52%)',
+      'very-light-gray': 'hsl(0, 0%, 98%)',
+      'white': 'hsl(0, 0%, 100%)',
+    }
+  },
+  variants: {
+    extend: {},
   },
   plugins: [],
-}
+};
