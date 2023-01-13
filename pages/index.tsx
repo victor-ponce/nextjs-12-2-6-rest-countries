@@ -33,6 +33,7 @@ export default function Home({ data }) {
     router.push({
       query: {
         q,
+        region
       }
     })
     setSearchField(e.target.value);
@@ -42,6 +43,12 @@ export default function Home({ data }) {
     target: { value: React.SetStateAction<string> };
   }) => {
     // Update the region query parameter
+    const region = `${e.target.value}`;
+    router.push({
+      query: {
+        region,
+      }
+    })
     setRegion(e.target.value);
   };
 
